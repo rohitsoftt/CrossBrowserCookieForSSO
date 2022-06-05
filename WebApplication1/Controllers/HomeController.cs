@@ -12,7 +12,7 @@ namespace WebApplication1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        private const string SecureCookieName = "ajhsdfjhu";
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -20,7 +20,9 @@ namespace WebApplication1.Controllers
 
         public IActionResult Index()
         {
-            return Redirect("https://localhost:44301");
+            Request.Cookies.TryGetValue(SecureCookieName, out string userName);
+            ViewBag.Username = userName;
+            return View();
         }
 
         public IActionResult Privacy()

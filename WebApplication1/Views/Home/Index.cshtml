@@ -5,4 +5,34 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    @if(ViewBag.Username != null && ViewBag.Username.ToString() != null)
+    {
+        <div>
+            User @ViewBag.Username Successfull logged In 
+        </div>
+    }
+    else
+    {
+        <button value="CLick here for SSO" class="btn btn-primary" id="ssoBtnId">CLick here to SSO</button>
+    }
+
 </div>
+<script>
+
+    var btn = document.getElementById("ssoBtnId");
+    btn.onclick = () => {
+        window.location.href = "https://localhost:44306/Home/Login?returnURL="+window.location.href;
+    }
+
+
+//function RedirectToSSO(){
+//    var btn = document.getElementById("ssoBtnId");
+//    btn.onclick = () => {
+//        window.location.href = "https://localhost:44306?returnURL="+window.location.href;
+//    }
+//    document.getElementById("ssoBtnId").addEventListener("click", () =>{
+//        window.location.href = "https://localhost:44306?returnURL="+window.location.href;
+//    });
+//}
+</script>
